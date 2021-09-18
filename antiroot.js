@@ -141,31 +141,11 @@ function bypassShellCheck(){
 
 Java.perform(function(){
 
-    var dlopen = Module.getExportByName(null,"__loader_dlopen")
-
-    Interceptor.attach(dlopen,{
-        onEnter:function(args){
-            this.pathname = args[0].readUtf8String()
-            this.mode = args[1].toInt32()
-            console.log("dlopen - pathname : " + this.pathname + ", mode : " + this.mode)
-        },
-        onLeave:function(retval){
-        //     if(retval.toInt32() != 0){
-        //         if (commonPaths.indexOf(this.inputPath) >= 0) {
-        //             console.log("fopen : " + this.inputPath)
-        //             retval.replace(ptr(0x0))
-        //         }
-        //     }
-        }
-    })
 
     bypassJavaFileCheck()
     bypassNativeFileCheck()
     setReleaseKey()
     bypassRootAppCheck()
     bypassShellCheck()
-
-
-    
 
 })
