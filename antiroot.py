@@ -4,7 +4,7 @@ import os
 device = frida.get_usb_device()
 print(device)
 
-target = "com.digitalgd.dgyss"
+target = "com.xxx.xxx"
 
 with open(os.path.dirname(os.path.abspath(__file__)) + "/antiroot.js","r",encoding="utf8") as f:
     jscode = f.read()
