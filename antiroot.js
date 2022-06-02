@@ -212,13 +212,9 @@ function bypassShellCheck(){
 }
 
 
-
 console.log("Attach")
 bypassNativeFileCheck()
-
-Java.perform(function(){
-    bypassJavaFileCheck()
-    setProp()
-    bypassRootAppCheck()
-    bypassShellCheck()
-})
+bypassJavaFileCheck()
+setProp()
+bypassRootAppCheck()
+bypassShellCheck()

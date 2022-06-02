@@ -4,7 +4,7 @@ import os
 device = frida.get_usb_device()
 print(device)
 
-target = "com.xxx.xxx"
+target = "com.digitalgd.dgyss"
 
 with open(os.path.dirname(os.path.abspath(__file__)) + "/antiroot.js","r",encoding="utf8") as f:
     jscode = f.read()
@@ -17,7 +17,7 @@ def spawn_added(spawn):
         script = session.create_script(jscode)
         script.on('message', on_message)
         script.load()
-        device.resume(spawn.pid)
+    device.resume(spawn.pid)
         
 def on_message(message, data):
     if message['type'] == 'send':
