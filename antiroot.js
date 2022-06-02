@@ -60,7 +60,13 @@ function stackTraceHere(isLog){
     }else{
         return stackinfo
     }
-    
+}
+
+function stackTraceNativeHere(isLog){
+    var backtrace = Thread.backtrace(this.context, Backtracer.ACCURATE)
+    .map(DebugSymbol.fromAddress)
+    .join("\n\t");
+    console.log(backtrace)
 }
 
 
@@ -96,10 +102,6 @@ function bypassNativeFileCheck(){
             if(retval.toInt32() != 0){
                 if (commonPaths.indexOf(this.inputPath) >= 0) {
                     console.log("Anti Root Detect - fopen : " + this.inputPath)
-                    var backtrace = Thread.backtrace(this.context, Backtracer.ACCURATE)
-                        .map(DebugSymbol.fromAddress)
-                        .join("\n\t");
-                        console.log(backtrace)
                     retval.replace(ptr(0x0))
                 }
             }
@@ -211,11 +213,11 @@ function bypassShellCheck(){
 
 
 
+console.log("Attach")
+bypassNativeFileCheck()
+
 Java.perform(function(){
-    console.log("Attach")
-    
     bypassJavaFileCheck()
-    bypassNativeFileCheck()
     setProp()
     bypassRootAppCheck()
     bypassShellCheck()
