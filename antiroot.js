@@ -30,7 +30,7 @@ const commonPaths = [
     "/data/adb/magisk.db",
     "/data/adb/magisk_simple",
     "/init.magisk.rc",
-    "/system/xbin/ku.sud"
+    "/system/xbin/ku.sud",
     "/data/adb/ksu",
     "/data/adb/ksud"
 ];
@@ -48,7 +48,7 @@ const ROOTmanagementApp = [
     "com.chelpus.lackypatch",
     "com.ramdroid.appquarantine",
     "com.ramdroid.appquarantinepro",
-    "com.topjohnwu.magisk"
+    "com.topjohnwu.magisk",
     "me.weishu.kernelsu"
 ];
 
